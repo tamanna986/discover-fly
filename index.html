@@ -53,7 +53,7 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">First Class ($<span id="First-ClassSeat-price" >150</span> )</label>
-                    <input id="First-ClassSeat-count" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="First-ClassSeat-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
                   <!--   <p>+ -</p>  --> 
@@ -66,7 +66,7 @@
             <div class="input-group f-class">
                 <div>
                     <label for="">Economy ($<span id="EconomySeat-price" >100</span> )</label>
-                    <input id="EconomySeat-count" class="inp-style inp-width" type="number" name="" value="1">
+                    <input id="EconomySeat-count" class="inp-style inp-width" type="number" name="" value="0">
                 </div>
                 <div class="plus-minus-btn">
                   
@@ -81,7 +81,7 @@
                         <p>Subtotal</p>
                     </div>
                     <div class="right">
-                        <p>$0</p>
+                        <p>$ <span id="sub-total" >0</span> </p>
                     </div>
                 </div>
 
@@ -131,9 +131,9 @@
         productChangeHandle("First-ClassSeat",false);
        });
      function productChangeHandle(travelClass,IsIncrease){
-        //console.log(IsIncrease);
+        
      
-        const seatCount = document.getElementById(travelClass + "-count");
+        const seatCount =     document.getElementById(travelClass + "-count"); //getInputValue(travelClass);  
         const seatCountNumber = parseInt(seatCount.value);
         let seatNewCount = seatCountNumber;
         if(IsIncrease == true){
@@ -156,8 +156,22 @@
      }
      //console.log(caseTotal);
         document.getElementById(travelClass + "-price").innerText =  totalPrice;
+        calculateTotal();
      }
-     
+
+     function calculateTotal(){
+        const FirstClassSeatCount = getInputValue("First-ClassSeat");
+        const EconomySeatCount = getInputValue("EconomySeat");
+
+        const subTotalPrice = FirstClassSeatCount*150 + EconomySeatCount*100;
+        document.getElementById('sub-total').innerText = subTotalPrice;
+        console.log(subTotalPrice);
+     }
+     function getInputValue(travelClass){
+         const ticketPriceInput = document.getElementById(travelClass + '-count');
+         const ticketPriceCount = parseInt(ticketPriceInput.value);
+         return ticketPriceCount;
+     }
      
      </script>
      
