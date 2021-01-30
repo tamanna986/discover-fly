@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     text-decoration: none;
-    list-style-type: none;
+    list-style-type: none;  
 }
 body{
     font-family: 'Roboto', sans-serif;
@@ -119,4 +119,21 @@ nav ul li a:hover, a.active{
 .amount{
     display: flex;
     justify-content: space-between;
+}
+
+#welcome-page-text{
+    background-color: rgb(195, 169, 238);
+    color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 10px 20px 30px  rgb(209, 228, 233);
+    padding: 45px;
+    margin: 80px;
+    width: 600px;
+    
+}
+#welcome-page{
+  
+   display: none;
+   margin-top: 200px;
+   margin-left: 300px;
 }

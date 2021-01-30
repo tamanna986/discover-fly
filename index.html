@@ -12,10 +12,11 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.css" rel="stylesheet" />
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-   
+ 
 </head>
 
 <body>
+ <section id="formContainer">
     <!--Header and Menu Section-->
     <header class="container">
         <nav>
@@ -29,7 +30,7 @@
     </header>
 
     <!--Booking Section-->
-    <main class="main-content container">
+    <main  class="main-content container">
         <div class="booking-form">
             <h3>Booking Flights</h3>
             <div class="input-group">
@@ -103,7 +104,7 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+            <button id="switchNextPage" onclick="alertMessage()" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -111,29 +112,38 @@
             <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
         </div>
     </section>
+ </section>  
+
+    <div id="welcome-page" >
+        <div id="welcome-page-text" >
+            <div>
+                <h1>Congratulations Dear! You have successfully booked your desire destination ticket! We hope you will enjoy the flight! Have a safe journey.</h1>
+            </div>
+        </div>
+    </div>
 
     <!--Thank You-->
 
-    <script>
+     <script>
         document.getElementById("Economy-IncreaseBtn").addEventListener("click",function(){
-           productChangeHandle("EconomySeat",true);
+            travelClassChangeHandle("EconomySeat",true);
        });
      
        document.getElementById("Economy-DecreaseBtn").addEventListener("click",function(){
-        productChangeHandle("EconomySeat",false);
+        travelClassChangeHandle("EconomySeat",false);
        });
      
        document.getElementById("First-Class-IncreaseBtn").addEventListener("click",function(){
-           productChangeHandle("First-ClassSeat",true);
+        travelClassChangeHandle("First-ClassSeat",true);
        });
      
        document.getElementById("First-Class-DecreaseBtn").addEventListener("click",function(){
-        productChangeHandle("First-ClassSeat",false);
+        travelClassChangeHandle("First-ClassSeat",false);
        });
-     function productChangeHandle(travelClass,IsIncrease){
+     function travelClassChangeHandle(travelClass,IsIncrease){
         
      
-        const seatCount =     document.getElementById(travelClass + "-count"); //getInputValue(travelClass);  
+        const seatCount = document.getElementById(travelClass + "-count"); //getInputValue(travelClass);  //
         const seatCountNumber = parseInt(seatCount.value);
         let seatNewCount = seatCountNumber;
         if(IsIncrease == true){
@@ -146,7 +156,7 @@
         seatCount.value  =  seatNewCount;
         let totalPrice = 0;
      
-        //const caseTotal = caseNewCount* 59;
+        
          if(travelClass == "First-ClassSeat"){
              totalPrice = seatNewCount* 150;
      }
@@ -154,7 +164,7 @@
      if(travelClass == "EconomySeat"){
          totalPrice = seatNewCount* 100;
      }
-     //console.log(caseTotal);
+     
         document.getElementById(travelClass + "-price").innerText =  totalPrice;
         calculateTotal();
      }
@@ -177,9 +187,19 @@
          const ticketPriceCount = parseInt(ticketPriceInput.value);
          return ticketPriceCount;
      }
-     
+
+     function alertMessage() {
+         alert("Hello dear! Are you sure that you want to Book Now? If soo, then click on the 'ok' button here!");
+     }
+    const bookNow =  document.getElementById("switchNextPage");
+    bookNow.addEventListener("click",function(){
+    const formContainer = document.getElementById("formContainer");
+    formContainer.style.display = 'none';  
+    const welcomePage = document.getElementById('welcome-page');
+    welcomePage.style.display = 'block';
+    });
      </script>
-     
+      
 
 </body>
 
