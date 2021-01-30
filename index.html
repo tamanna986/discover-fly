@@ -90,7 +90,7 @@
                         <p>Charge 10% VAT</p>
                     </div>
                     <div class="right">
-                        <p>$0</p>
+                        <p>$ <span id="tax-amount" >0</span></p>
                     </div>
                 </div>
                 <hr>
@@ -99,7 +99,7 @@
                         <h4>Total</h4>
                     </div>
                     <div class="right">
-                        <p>$0</p>
+                        <p>$ <span id="final-grand-total" >0</span></p>
                     </div>
                 </div>
             </div>
@@ -165,7 +165,12 @@
 
         const subTotalPrice = FirstClassSeatCount*150 + EconomySeatCount*100;
         document.getElementById('sub-total').innerText = subTotalPrice;
-        console.log(subTotalPrice);
+        
+        const tax = Math.round(subTotalPrice*0.1);
+        document.getElementById("tax-amount").innerText = tax;
+
+        const grandTotal = subTotalPrice + tax;
+        document.getElementById('final-grand-total').innerText = grandTotal;
      }
      function getInputValue(travelClass){
          const ticketPriceInput = document.getElementById(travelClass + '-count');
